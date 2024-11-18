@@ -1,0 +1,25 @@
+@switch (content.elementType) {
+    @case ('text') {
+        {{content.elementContent}}
+    }
+    @case ('p') {
+        <p>
+            @if (!!content && isRecursive) {
+                @for(cont of content.elementContent; track cont.toString() ) {
+                    @let forceCont = forceNgContent(cont);
+                    <content-renderer [content]="forceCont"></content-renderer>
+                }
+            } @else if(!!content) {
+                {{content.elementContent}}
+            }
+            
+        </p>
+    } @case ('a') {
+        @if(content.routerLink) {
+            <a [routerLink]="content.routerLink">{{content.elementContent}}</a>
+        } @else if (content.href) {
+            <a [href]="content.href">{{content.elementContent}}</a>
+        }
+    }
+
+}

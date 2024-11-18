@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NgElementType, Page } from './page';
+import { Page } from './page';
 import { Observable, of } from 'rxjs';
+import { NgContentType } from '../content-renderer/ng-content';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +12,16 @@ export class PageService {
       'home',
       "Home Page",
       [{
-        elementType: NgElementType.p,
+        elementType: NgContentType.p,
         elementContent: [
           {
-            elementType: NgElementType.text,
+            elementType: NgContentType.text,
             elementContent: "Hello world. ",
           },
           {
-            elementType: NgElementType.a,
+            elementType: NgContentType.a,
             elementContent: "Click Me.",
-            href: "/"
+            href: "/hello-world"
           }
         ]
       }]
@@ -29,10 +30,10 @@ export class PageService {
       slug:  'hello-world',
       title: "Hello World",
       body: [{
-        elementType: NgElementType.p,
+        elementType: NgContentType.p,
         elementContent: [
           {
-            elementType: NgElementType.text,
+            elementType: NgContentType.text,
             elementContent: "Hello World"
           }
 

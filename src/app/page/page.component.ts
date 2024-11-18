@@ -2,11 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { PageService } from './page.service';
 import { ActivatedRoute } from '@angular/router';
 import { Page } from './page';
+import { ContentRendererComponent } from '../content-renderer/content-renderer.component';
 
 @Component({
   selector: 'app-page',
   standalone: true,
-  imports: [],
+  imports: [ContentRendererComponent],
   templateUrl: './page.component.html',
   styleUrl: './page.component.scss'
 })

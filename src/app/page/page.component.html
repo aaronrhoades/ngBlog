@@ -2,5 +2,7 @@
 <!-- Also serves as 404 page -->
 @if (page) {
     <h1>{{page.title}}</h1>
-    {{page.slug}}
+    @for(content of page.body; track content.toString()) {
+        <content-renderer [content]="content"></content-renderer>
+    }
 }
