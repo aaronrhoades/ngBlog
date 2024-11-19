@@ -16,9 +16,6 @@ export class ContentRendererComponent implements OnInit {
   isRecursive: boolean = false;
 
   ngOnInit() {
-    console.log('content', this.content);
-    console.log(typeof this.content.elementContent);
-    console.log(typeof this.content.elementContent === 'object');
     if (typeof this.content.elementContent === 'object') { //array returns 'object'
       this.isRecursive = true;
     }
