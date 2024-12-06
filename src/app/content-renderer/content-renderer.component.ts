@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, inject, Injector, Input, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgContent, NgContentType } from './ng-content';
 
@@ -11,19 +11,17 @@ import { NgContent, NgContentType } from './ng-content';
   styleUrl: './content-renderer.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class ContentRendererComponent implements OnInit {
-  @Input({required: true}) content!: NgContent; //see also: @Input({transform: transFunction})
-  isRecursive: boolean = false;
+export class ContentRendererComponent implements AfterViewInit {
+  @Input({required: true}) content!: NgContent[]; //see also: @Input({transform: transFunction})
+  readonly NgContentType = NgContentType;
+  vcr = inject(ViewContainerRef);
+  injector = inject(Injector);
+  @ViewChild('contentTemplate') contentTemplate!: TemplateRef<any>;
 
-  ngOnInit() {
-    if (typeof this.content.elementContent === 'object') { //array returns 'object'
-      this.isRecursive = true;
-    }
+  ngAfterViewInit() {
+
+    this.vcr.createEmbeddedView(this.contentTemplate, this.content);
+
   }
 
-  forceNgContent(ngContOrString: NgContent | string): NgContent {
-    const emptyContent = new NgContent(NgContentType.text, '');
-
-    return ngContOrString.hasOwnProperty('elementType') ? ngContOrString as NgContent : emptyContent;
-  }
 }

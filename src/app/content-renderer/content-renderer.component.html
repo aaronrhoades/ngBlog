@@ -1,25 +1,19 @@
-@switch (content.elementType) {
-    @case ('text') {
-        {{content.elementContent}}
-    }
-    @case ('p') {
-        <p>
-            @if (!!content && isRecursive) {
-                @for(cont of content.elementContent; track cont.toString() ) {
-                    @let forceCont = forceNgContent(cont);
-                    <content-renderer [content]="forceCont"></content-renderer>
-                }
-            } @else if(!!content) {
-                {{content.elementContent}}
+<ng-container *ngTemplateOutlet="contentTemplate; context: content"></ng-container>
+
+<ng-template #contentTemplate
+>
+
+@for(cont of content; track cont.toString()) {
+    @switch(cont.elementType) {
+        @case(NgContentType.p) {
+            <p>{{cont.elementContent}}</p>
+        } @case(NgContentType.a) {
+            @if (!!cont.routerLink) {
+                <a [routerLink]="cont.routerLink">{{cont.elementContent}}</a>
+            } @else if (!!cont.href) {
+                <a [href]="cont.href">{{cont.elementContent}}</a>
             }
-            
-        </p>
-    } @case ('a') {
-        @if(content.routerLink) {
-            <a [routerLink]="content.routerLink">{{content.elementContent}}</a>
-        } @else if (content.href) {
-            <a [href]="content.href">{{content.elementContent}}</a>
         }
     }
-
 }
+</ng-template>

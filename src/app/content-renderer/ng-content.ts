@@ -2,6 +2,7 @@ export class NgContent {
     elementType: NgContentType = NgContentType.text;
     elementContent: NgContent[] | string | undefined;
     href?: string;
+    alt?: string;
     routerLink?: string;
     styles?: string[];
 

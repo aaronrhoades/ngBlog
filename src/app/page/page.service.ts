@@ -13,17 +13,16 @@ export class PageService {
       "Home Page",
       [{
         elementType: NgContentType.p,
-        elementContent: [
-          {
-            elementType: NgContentType.text,
-            elementContent: "Hello world. ",
-          },
-          {
-            elementType: NgContentType.a,
-            elementContent: "Click Me.",
-            href: "/hello-world"
-          }
-        ]
+        elementContent: 'Hey'
+      },
+      {
+        elementType: NgContentType.text,
+        elementContent: "Hello world. ",
+      },
+      {
+        elementType: NgContentType.a,
+        elementContent: "Click Me.",
+        href: "/hello-world"
       }]
     ),
     {
@@ -39,6 +38,15 @@ export class PageService {
 
         ]
       }]
+    },
+    {
+      slug:  'hello-world2',
+      title: "Hello World",
+      body: [{
+        elementType: NgContentType.p,
+        elementContent:  "Hello World2"
+        
+      }]
     }
     
   ];
@@ -46,7 +54,7 @@ export class PageService {
 
   public getPageBySlug(slug: string | undefined) : Observable<Page> {
     let page: Page | undefined = undefined;
-
+    
     if(!slug) {
       page = this.pages.find(page => page.slug === 'home');
     } else {

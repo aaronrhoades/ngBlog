@@ -1,7 +1,7 @@
-import { NgContent } from './ng-content';
+import { NgContent, NgContentType } from './ng-content';
 
 describe('NgContent', () => {
   it('should create an instance', () => {
-    expect(new NgContent()).toBeTruthy();
+    expect(new NgContent(NgContentType.p, 'content')).toBeTruthy();
   });
 });
