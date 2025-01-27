@@ -4,3 +4,8 @@ GET {{WebAPI_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{WebAPI_HostAddress}}/blog/
+Accept: application/json
+
+###
