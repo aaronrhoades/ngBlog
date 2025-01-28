@@ -3,6 +3,19 @@ using WebAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//add CORS
+
+builder.Services.AddCors(options =>
+{
+  options.AddPolicy("Development",
+      policy =>
+      {
+        policy.WithOrigins("http://localhost:4200")
+          .AllowAnyHeader()
+          .AllowAnyMethod();
+      });
+});
+
 // Add services to the container.
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -25,6 +38,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors();
 
 app.MapControllers();
 

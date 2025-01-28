@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ namespace WebAPI.Controllers
 {
   [Route("[controller]")]
   [ApiController]
+  [EnableCors("Development")] //(origins: "http://localhost:4200", headers: "*", methods: "*")
   public class BlogController : ControllerBase
   {
 
@@ -24,6 +26,18 @@ namespace WebAPI.Controllers
       var blogs = await _context.blogs.ToListAsync();
 
       return Ok(blogs);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Blog>> GetBlogById(string id)
+    {
+      var blog = await _context.blogs.FindAsync(id);
+
+      if (blog == null) {
+        return NotFound();
+      }
+
+      return Ok(blog);
     }
 
   }
