@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Blog>> GetBlogById(string id)
+    public async Task<ActionResult<Blog>> GetBlogById(int id)
     {
       var blog = await _context.blogs.FindAsync(id);
 
