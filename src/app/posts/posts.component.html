@@ -1,2 +1,6 @@
 <!-- A list of blog posts, paginated -->
 <p>posts works!</p>
+
+@for (blog of blogs; track blog.id) {
+    <h1>{{blog.title}}</h1>
+}
