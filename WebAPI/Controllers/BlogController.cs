@@ -9,7 +9,7 @@ namespace WebAPI.Controllers
 {
   [Route("[controller]")]
   [ApiController]
-  [EnableCors("Development")] //(origins: "http://localhost:4200", headers: "*", methods: "*")
+  [EnableCors("Development")]
   public class BlogController : ControllerBase
   {
 
