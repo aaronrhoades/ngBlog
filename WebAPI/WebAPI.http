@@ -9,3 +9,8 @@ GET {{WebAPI_HostAddress}}/{id}
 Accept: application/json
 
 ###
+
+GET {{WebAPI_HostAddress}}/BySlug/{slug}
+Accept: application/json
+
+###

@@ -10,6 +10,7 @@ namespace WebAPI.Controllers
   [Route("[controller]")]
   [ApiController]
   [EnableCors("Development")]
+  [Produces("application/json")]
   public class BlogController : ControllerBase
   {
 
@@ -34,6 +35,19 @@ namespace WebAPI.Controllers
       var blog = await _context.blogs.FindAsync(id);
 
       if (blog == null) {
+        return NotFound();
+      }
+
+      return Ok(blog);
+    }
+
+    [HttpGet("BySlug/{slug}")]
+    public async Task<ActionResult<Blog>> GetBlogBySlug(string slug)
+    {
+      var blog = await _context.blogs.SingleOrDefaultAsync(m => m.Slug == slug);
+
+      if (blog == null)
+      {
         return NotFound();
       }
 
