@@ -15,4 +15,8 @@ export class PostService {
   public getAllBlogs(): Observable<Post[]> {
     return this.http.get<Post[]>(this.apiUrl + '/Blog');
   }
+
+  public getBlogBySlug(slug: string): Observable<Post> {
+    return this.http.get<Post>(this.apiUrl + '/Blog/BySlug/' + slug);
+  }
 }

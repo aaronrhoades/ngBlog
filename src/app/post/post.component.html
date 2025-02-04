@@ -1,2 +1,4 @@
-<!-- A singular blog post -->
-<p>post works!</p>
+<div *ngIf="post$ | async as postObj">
+<h1>{{postObj.title}}</h1>
+<p>{{postObj.content}}</p>
+</div>
