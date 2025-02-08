@@ -1,0 +1,4 @@
+<div *ngIf="blogPost$ | async as blogObj">
+<h1>{{blogObj.title}}</h1>
+<p>{{blogObj.content}}</p>
+</div>

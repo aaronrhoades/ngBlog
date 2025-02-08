@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { PageComponent } from './page/page.component';
-import { PostsComponent } from './posts/posts.component';
-import { PostComponent } from './post/post.component';
+import { BlogPostsComponent } from './blog/blog-posts/blog-posts.component';
+import { BlogPostComponent } from './blog/blog-post/blog-post.component';
 
 export const routes: Routes = [
     { 
@@ -10,11 +10,11 @@ export const routes: Routes = [
     },
     {
         path: 'blog',
-        component: PostsComponent,
+        component: BlogPostsComponent,
     },
     {
         path: 'blog/:slug',
-        component: PostComponent,
+        component: BlogPostComponent,
     },
     { 
         path: ':slug',

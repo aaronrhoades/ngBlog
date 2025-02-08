@@ -1,6 +1,0 @@
-<!-- A list of blog posts, paginated -->
-<p>posts works!</p>
-
-@for (blog of blogs; track blog.id) {
-    <h1><a [href]="'blog/' + blog.slug">{{blog.title}}</a></h1>
-}

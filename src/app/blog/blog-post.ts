@@ -1,4 +1,4 @@
-export class Post {
+export class BlogPost {
     id?: number;
     slug?: string;
     title?: string;

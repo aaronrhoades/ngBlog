@@ -1,30 +1,30 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
-import { PostService } from './post.service';
-import { Post } from './post';
+import { BlogService } from '../blog.service';
+import { BlogPost } from '../blog-post';
 import { CommonModule } from '@angular/common';
 
 
 @Component({
-  selector: 'app-post',
+  selector: 'app-blog',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './post.component.html',
-  styleUrl: './post.component.scss'
+  templateUrl: './blog-post.component.html',
+  styleUrl: './blog-post.component.scss'
 })
-export class PostComponent implements OnInit {
+export class BlogPostComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
-  post$!: Observable<Post>;
+  blogPost$!: Observable<BlogPost>;
   slug!: string;
   
-  constructor(private postService: PostService){}
+  constructor(private blogService: BlogService){}
 
   ngOnInit() {
-    this.post$ = this.route.paramMap.pipe(
+    this.blogPost$ = this.route.paramMap.pipe(
       switchMap(params => {
         this.slug = String(params.get('slug'));
-        return this.postService.getBlogBySlug(this.slug);
+        return this.blogService.getBlogBySlug(this.slug);
       })
     )
   }

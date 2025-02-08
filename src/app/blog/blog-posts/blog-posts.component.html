@@ -1,0 +1,6 @@
+<!-- A list of blog posts, paginated -->
+test
+{{blogPosts.length}}
+@for (blogPost of blogPosts; track blogPost.id) {
+    <h1><a [href]="'blog/' + blogPost.slug">{{blogPost.title}}</a></h1>
+}
