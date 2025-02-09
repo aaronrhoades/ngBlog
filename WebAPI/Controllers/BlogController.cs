@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Data;
@@ -52,6 +51,15 @@ namespace WebAPI.Controllers
       }
 
       return Ok(blog);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<BlogPost>> CreateBlog(BlogPost blogPost)
+    {
+      _context.blogs.Add(blogPost);
+      await _context.SaveChangesAsync();
+
+      return CreatedAtAction(nameof(GetBlogById), new { id = blogPost.Id}, blogPost);
     }
 
   }
