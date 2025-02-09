@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<Blog>>> GetAllBlogs()
+    public async Task<ActionResult<List<BlogPost>>> GetAllBlogs()
     {
       var blogs = await _context.blogs.ToListAsync();
 
@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Blog>> GetBlogById(int id)
+    public async Task<ActionResult<BlogPost>> GetBlogById(int id)
     {
       var blog = await _context.blogs.FindAsync(id);
 
@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
     }
 
     [HttpGet("BySlug/{slug}")]
-    public async Task<ActionResult<Blog>> GetBlogBySlug(string slug)
+    public async Task<ActionResult<BlogPost>> GetBlogBySlug(string slug)
     {
       var blog = await _context.blogs.SingleOrDefaultAsync(m => m.Slug == slug);
 

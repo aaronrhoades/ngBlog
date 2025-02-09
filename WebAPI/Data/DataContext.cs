@@ -16,6 +16,6 @@ namespace WebAPI.Data
 
       builder.HasDefaultSchema("identity");
     }
-    public DbSet<Blog> blogs { get; set; }
+    public DbSet<BlogPost> blogs { get; set; }
   }
 }

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebAPI.Models
 {
-  public class Blog
+  public class BlogPost
   {
     [Key]
     public int Id { get; set; }
